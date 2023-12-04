@@ -70,8 +70,13 @@ fun Application.configureRouting() {
                 val mFile = File("${UPLOAD_FOLDER}/${id}/${besinnlichesImage?.srcFilename}")
                 call.respondFile(mFile)
             }
-            get("{id}/generate") {
-                // Show a page with fields for editing an article
+            put("{id}/besinnliches_img") {
+                val id = call.parameters.getOrFail("id")
+                val besinnlichesImage = besinnlicheImages.find { it.id == id }
+                val prompt = Process().run { "python", "${UPLOAD_FOLDER}/${id}/${besinnlichesImage?.srcFilename}" }
+                besinnlichesImage?.srcFilename = mFile.name
+                besinnlichesImage?.save()
+
             }
             post("{id}") {
                 // Update or delete an article

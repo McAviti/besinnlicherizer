@@ -14,7 +14,6 @@
                         <form action="/besinnliche_images/${besinnliches_image.id}/src_img"
                               name="addContentForm" method="post"
                               enctype="multipart/form-data">
-                        <#-- Add the rest of the Form's elements -->
                             <input type="file" name="uploadedFile" size="25"
                                id="src_img" />
                             <input type="submit" value="Submit">
