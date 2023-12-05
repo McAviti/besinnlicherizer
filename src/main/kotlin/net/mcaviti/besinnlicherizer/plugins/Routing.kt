@@ -28,7 +28,9 @@ fun Application.configureRouting() {
                 call.respond(FreeMarkerContent("index.ftl", mapOf("besinnliche_images" to besinnlicheImages)))
             }
             get("new") {
-                call.respond(FreeMarkerContent("show.ftl", model = null))
+                val besinnlichesImage = BesinnlichesImage.newEntry()
+                besinnlicheImages.add(besinnlichesImage)
+                call.respond(FreeMarkerContent("show.ftl", mapOf("besinnliches_image" to besinnlichesImage)))
             }
             post {
 
@@ -71,12 +73,13 @@ fun Application.configureRouting() {
                 call.respondFile(mFile)
             }
             put("{id}/besinnliches_img") {
+                /*
                 val id = call.parameters.getOrFail("id")
                 val besinnlichesImage = besinnlicheImages.find { it.id == id }
                 val prompt = Process().run { "python", "${UPLOAD_FOLDER}/${id}/${besinnlichesImage?.srcFilename}" }
                 besinnlichesImage?.srcFilename = mFile.name
                 besinnlichesImage?.save()
-
+*/
             }
             post("{id}") {
                 // Update or delete an article

@@ -16,8 +16,8 @@ def analyze_image(imagepath):
              " illuminated in a variety of christmas decorated lights. ",
              " with christmas trees everywhere. "]
 
-    service_options = sdk.VisionServiceOptions("https://kdi-postat-image-vision.cognitiveservices.azure.com/",
-                                               "169c011247594e04a0685360434cc11f")
+    service_options = sdk.VisionServiceOptions(Environment.GetEnvironmentVariable("VISION_ENDPOINT"),
+                                               Environment.GetEnvironmentVariable("VISION_KEY") )
 
     vision_source = sdk.VisionSource(filename=imagepath)
     # vision_source = sdk.VisionSource(

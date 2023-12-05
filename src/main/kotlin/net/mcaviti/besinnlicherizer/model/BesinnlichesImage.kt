@@ -15,7 +15,7 @@ import kotlin.io.path.readText
 class BesinnlichesImage
 private constructor(val id: String, var srcFilename: String, var prompt: String, var besinnlichFilename: String) {
     companion object {
-        fun newEntry(srcFilename: String, prompt: String, besinnlichFilename: String) = BesinnlichesImage(UUID.randomUUID().toString(), srcFilename, prompt, besinnlichFilename)
+        fun newEntry(srcFilename: String = "", prompt: String="", besinnlichFilename: String="") = BesinnlichesImage(UUID.randomUUID().toString(), srcFilename, prompt, besinnlichFilename)
     }
 
 
