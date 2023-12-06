@@ -2,14 +2,19 @@
 <#import "_layout.ftl" as layout />
 <@layout.header>
     <p>
-        <a href="/besinnliche_images/new">Create Besinnliches Image</a>
+    <form action=/besinnliche_images/new">
+        <button type="submit">Create Besinnliches Image</button>
+    </form>
+
     </p>
     <hr>
+    <ul>
     <#list besinnliche_images?reverse as besinnliches_image>
-        <div>
+        <li>
                 <a href="/besinnliche_images/${besinnliches_image.id}">${besinnliches_image.id}</a>: ${besinnliches_image.srcFilename}
-        </div>
+        </li>
     </#list>
+    </ul>
     <hr>
 </@layout.header>
 
