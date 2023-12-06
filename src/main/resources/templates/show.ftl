@@ -24,14 +24,19 @@
                 </td>
                 <td>
                     <#if besinnliches_image.besinnlichFilename != "">
-                        <img src="/static/${besinnliches_image.id}/${besinnliches_image.besinnlichFilename}" onclick="this.requestFullscreen()">
+                        <img src="/besinnliche_images/${besinnliches_image.id}/besinnliches_img" onclick="this.requestFullscreen()">
                     <#else>
-                        <form action="/besinnliche_images/${besinnliches_image.id}/besinnliches_img" method="put">
+                        <form action="/besinnliche_images/${besinnliches_image.id}/besinnliches_img" method="post" onsubmit="sf.start();">
                             <input type="submit" value="Generate">
                         </form>
                     </#if>
                 </td>
             </tr>
+            <#if besinnliches_image.prompt != "">
+            <tr>
+                <td colspan="2"><pre>${besinnliches_image.prompt}</pre></td>
+            </tr>
+            </#if>
         </table>
     </div>
 </@layout.header>

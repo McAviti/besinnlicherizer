@@ -1,6 +1,7 @@
 package net.mcaviti.besinnlicherizer.model
 
 import com.google.gson.Gson
+import net.mcaviti.besinnlicherizer.UPLOAD_FOLDER
 import java.io.File
 import java.io.IOException
 import java.nio.file.FileSystems
@@ -42,4 +43,3 @@ fun initBesinnlicheImages() {
     println("Initialized")
 }
 
-const val UPLOAD_FOLDER="/data/besinnlicherizer"

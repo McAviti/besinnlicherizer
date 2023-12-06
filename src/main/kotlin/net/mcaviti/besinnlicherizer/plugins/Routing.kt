@@ -13,6 +13,8 @@ import io.ktor.server.routing.*
 import io.ktor.server.util.*
 import java.io.File
 
+import net.mcaviti.besinnlicherizer.*
+
 fun Application.configureRouting() {
     install(StatusPages) {
         exception<Throwable> { call, cause ->
@@ -72,14 +74,24 @@ fun Application.configureRouting() {
                 val mFile = File("${UPLOAD_FOLDER}/${id}/${besinnlichesImage?.srcFilename}")
                 call.respondFile(mFile)
             }
-            put("{id}/besinnliches_img") {
-                /*
+            post("{id}/besinnliches_img") {
                 val id = call.parameters.getOrFail("id")
                 val besinnlichesImage = besinnlicheImages.find { it.id == id }
-                val prompt = Process().run { "python", "${UPLOAD_FOLDER}/${id}/${besinnlichesImage?.srcFilename}" }
-                besinnlichesImage?.srcFilename = mFile.name
-                besinnlichesImage?.save()
-*/
+                if (besinnlichesImage != null) {
+                    runAnalysis("$UPLOAD_FOLDER/$id", besinnlichesImage.srcFilename)
+                    runGenerator("$UPLOAD_FOLDER/$id")
+                    val prompt = File("${UPLOAD_FOLDER}/${id}/prompt.txt").readText(Charsets.UTF_8)
+                    besinnlichesImage.prompt = prompt
+                    besinnlichesImage.besinnlichFilename = "besinnliches_img.png"
+                    besinnlichesImage.save()
+                }
+                call.respond(FreeMarkerContent("show.ftl", mapOf("besinnliches_image" to besinnlichesImage)))
+            }
+            get("{id}/besinnliches_img") {
+                val id = call.parameters.getOrFail("id")
+                val besinnlichesImage = besinnlicheImages.find { it.id == id }
+                val mFile = File("${UPLOAD_FOLDER}/${id}/${besinnlichesImage?.besinnlichFilename}")
+                call.respondFile(mFile)
             }
             post("{id}") {
                 // Update or delete an article

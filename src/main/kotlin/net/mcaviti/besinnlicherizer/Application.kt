@@ -20,3 +20,5 @@ fun Application.module() {
     configureTemplating()
     configureRouting()
 }
+
+const val UPLOAD_FOLDER="/data/besinnlicherizer"

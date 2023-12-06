@@ -25,6 +25,10 @@
     <hr>
     <#nested>
     <a href="/">Back to the main page</a>
+    <script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>
+    <script>
+        var sf = new Snowflakes();
+    </script>
     </body>
     </html>
 </#macro>
