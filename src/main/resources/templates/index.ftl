@@ -2,7 +2,7 @@
 <#import "_layout.ftl" as layout />
 <@layout.header>
     <p>
-    <form action=/besinnliche_images/new">
+    <form action="/besinnliche_images/new">
         <button type="submit">Create Besinnliches Image</button>
     </form>
 

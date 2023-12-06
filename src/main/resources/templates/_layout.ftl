@@ -21,7 +21,7 @@
                 background-color: transparent;
                 text-decoration: none;
             }
-            .button {
+            button {
                 border: none;
                 color: gold;
                 background-color: darkgoldenrod;
@@ -34,6 +34,7 @@
                 transition-duration: 0.4s;
                 cursor: pointer;
             }
+            .wait, .wait * { cursor: wait; }
         </style>
     </head>
     <body style="text-align: center; color: gold; font-family: sans-serif; background-color:black;">

@@ -2,6 +2,8 @@ import os
 import requests
 from openai import OpenAI
 
+os.environ['REQUESTS_CA_BUNDLE'] = 'c:/tmp/zscaler.crt'
+
 with open("prompt.txt") as f:
   genprompt = f.read()
 
@@ -23,6 +25,6 @@ image_url = response.data[0].url
 print("-->" + image_url)
 
 data = requests.get(image_url).content
-f = open('besinnliches_image.png', 'wb')
+f = open('besinnliches_img.png', 'wb')
 f.write(data)
 f.close()
